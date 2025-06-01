@@ -1,0 +1,7 @@
+count:
+  first: "First"
+  second: "Second"
+
+messages:
+  score: "Score: {{score}}"
+  hello: "Hello, {{name}}!"

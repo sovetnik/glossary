@@ -1,0 +1,7 @@
+count:
+  first: "Первый"
+  second: "Второй"
+
+messages:
+  score: "Счёт: {{score}}"
+  hello: "Привет, {{name}}!"

@@ -45,14 +45,9 @@ defmodule Glossary do
 
       """
       def t(lexeme, locale) when is_binary(lexeme) and is_binary(locale) do
-        key = "#{locale}.#{lexeme}"
-
-        if expression = Map.get(@glossary, key) do
-          expression
-        else
-          Logger.warning("[Glossary] Missing: #{key}")
-          key
-        end
+        lexeme
+        |> Glossary.Lexeme.qualify(locale)
+        |> Glossary.Lexeme.lookup(@glossary, [])
       end
 
       @doc """
@@ -72,9 +67,9 @@ defmodule Glossary do
       @spec t(String.t(), String.t(), keyword()) :: String.t()
       def t(lexeme, locale, bindings)
           when is_binary(lexeme) and is_binary(locale) and is_list(bindings) do
-        Enum.reduce(bindings, t(lexeme, locale), fn {key, value}, acc ->
-          String.replace(acc, "{{#{key}}}", to_string(value))
-        end)
+        lexeme
+        |> Glossary.Lexeme.qualify(locale)
+        |> Glossary.Lexeme.lookup(@glossary, bindings)
       end
     end
   end

@@ -1,0 +1,18 @@
+validation:
+  required: "can't be blank"
+  acceptance: "must be accepted"
+  term_state: "Term {{body}} is not NEW but {{state}} instead"
+
+  length:
+    is:
+      string: "should be {{count}} character(s)"
+      binary: "should be {{count}} byte(s)"
+      list: "should have {{count}} item(s)"
+      map: "should have {{count}} item(s)"
+
+    min:
+      string: "should be at least {{count}} character(s)"
+      binary: "should be at least {{count}} byte(s)"
+      list: "should have at least {{count}} item(s)"
+      map: "should have at least {{count}} item(s)"
+
